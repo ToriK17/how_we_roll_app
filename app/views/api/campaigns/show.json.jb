@@ -1,0 +1,4 @@
+{
+  title: @campaign.title, 
+  details: @campaign.title
+}

@@ -1,0 +1,6 @@
+@campaigns.map do |campaign|
+  {
+    title: campaign.title, 
+    details: campaign.details
+  }
+end   
