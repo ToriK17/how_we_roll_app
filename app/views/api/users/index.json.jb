@@ -1,0 +1,8 @@
+@users.map do |user|
+  {
+    name: user.name, 
+    password: user.password,
+    bio: user.bio,
+    image: user.image
+  }
+end  
