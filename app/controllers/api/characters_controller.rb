@@ -29,7 +29,10 @@ class Api::CharactersController < ApplicationController
       height: params[:height],
       gender: params[:gender],
       race: params[:race],
-      alignment: params[:alignment]
+      alignment: params[:alignment], 
+      campaign_id: params[:campaign_id], 
+      user_id: params[:user_id]
+      # add current user logic next to pass the user_id via a header instead of manually 
       )
     if @character.save
       render "show.json.jb"
@@ -46,7 +49,7 @@ class Api::CharactersController < ApplicationController
   def update
     @character = Character.find(params[:id])
     @character.name = params[:name] || @character.name 
-    @character.class = params[:class] || @character.class 
+    @character.class_type = params[:class_type] || @character.class_type 
     @character.level = params[:level] || @character.level 
     @character.background = params[:background] || @character.background 
     @character.strength = params[:strength] || @character.strength

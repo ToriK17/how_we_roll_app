@@ -22,5 +22,7 @@
   height: character.height,
   gender: character.gender,
   race: character.race,
-  alignment: character.alignment
+  alignment: character.alignment, 
+  campaign_id: character.campaign_id, 
+  user_id: character.user_id
 }

@@ -1,5 +1,3 @@
 @characters.map do |character|
-  {
-    render partial: "character.json.jb", locals: {character: character}
-  }
+  render partial: "character.json.jb", locals: {character: character}
 end  

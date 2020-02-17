@@ -1,0 +1,6 @@
+ {
+    name: user.name, 
+    email: user.email,
+    bio: user.bio,
+    image: user.image
+  }
