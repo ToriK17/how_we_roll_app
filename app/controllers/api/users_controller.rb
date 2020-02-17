@@ -6,33 +6,40 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    @user = user.new(
+    user = User.new(
       name: params[:name], 
+      email: params[:email],
       password: params[:password],
+      password_confirmation: params[:password_confirmation],
       bio: params[:bio],
       image: params[:image]
       )
-    @user.save
-    render "show.json.jb"
+    if user.save
+      render json: { message: "User created successfully" }, status: :created
+    else
+      render json: { errors: user.errors.full_messages }, status: :bad_request
+    end
   end
 
   def show
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
     render "show.json.jb"
   end
 
   def update
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
     @user.name = params[:name] || @user.name 
     @user.password = params[:password] || @user.password 
+    @user.password_confirmation = params[:password_confirmation] || @user.password_confirmation 
     @user.bio = params[:bio] || @user.bio 
+    @user.email = params[:email] || @user.email 
     @user.image = params[:image] || @user.image 
     @user.save
     render "show.json.jb"
   end
 
   def destroy
-    user = user.find(params[:id])
+    user = User.find(params[:id])
     user.destroy
     render json: {message: "user destroyed."}
   end
