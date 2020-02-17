@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_003604) do
+ActiveRecord::Schema.define(version: 2020_02_17_032245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_003604) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
-    t.string "class"
+    t.string "class_type"
     t.integer "level"
     t.text "background"
     t.integer "strength"

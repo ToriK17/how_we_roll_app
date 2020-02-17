@@ -1,28 +1,5 @@
 @characters.map do |character|
   {
-    name: character.name, 
-    class: character.class,
-    level: character.level,
-    background: character.background,
-    strength: character.strength,
-    dexterity: character.dexterity,
-    constitution: character.constitution,
-    intelligence: character.intelligence,
-    wisdom: character.wisdom,
-    charisma: character.charisma,
-    health: character.health,
-    armor_class: character.armor_class,
-    initiative: character.initiative,
-    speed: character.speed,
-    traits: character.traits,
-    ideals: character.ideals,
-    bonds: character.bonds,
-    flaws: character.flaws,
-    age: character.age,
-    weight: character.weight,
-    height: character.height,
-    gender: character.gender,
-    race: character.race,
-    alignment: character.alignment
+    render partial: "character.json.jb", locals: {character: character}
   }
 end  

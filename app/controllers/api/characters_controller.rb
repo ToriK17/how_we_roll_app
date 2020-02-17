@@ -5,9 +5,9 @@ class Api::CharactersController < ApplicationController
   end
 
   def create
-    @character = character.new(
+    @character = Character.new(
       name: params[:name], 
-      class: params[:class],
+      class_type: params[:class_type],
       level: params[:level],
       background: params[:background],
       strength: params[:strength],
@@ -31,17 +31,20 @@ class Api::CharactersController < ApplicationController
       race: params[:race],
       alignment: params[:alignment]
       )
-    @character.save
-    render "show.json.jb"
+    if @character.save
+      render "show.json.jb"
+    else 
+      render json: {errors: @character.errors.full_messages}, status: :unprocessable_entity
+    end     
   end
 
   def show
-    @character = character.find(params[:id])
+    @character = Character.find(params[:id])
     render "show.json.jb"
   end
 
   def update
-    @character = character.find(params[:id])
+    @character = Character.find(params[:id])
     @character.name = params[:name] || @character.name 
     @character.class = params[:class] || @character.class 
     @character.level = params[:level] || @character.level 
@@ -71,7 +74,7 @@ class Api::CharactersController < ApplicationController
   end
 
   def destroy
-    character = character.find(params[:id])
+    character = Character.find(params[:id])
     character.destroy
     render json: {message: "character destroyed."}
   end
