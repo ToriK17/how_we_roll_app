@@ -1,4 +1,1 @@
-{
-  title: @campaign.title, 
-  details: @campaign.title
-}
+render partial: "campaign.json.jb", locals: {campaign: @campaign}

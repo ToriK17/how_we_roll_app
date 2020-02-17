@@ -7,9 +7,13 @@ class Api::CampaignsController < ApplicationController
   def create
     @campaign = Campaign.new(
       title: params[:title], 
-      details: params[:details])
-    @campaign.save
-    render "show.json.jb"
+      details: params[:details]
+      )
+    if @campaign.save
+      render "show.json.jb"
+    else
+      render json: {errors: @campaign.errors.full_messages}, status: :unprocessable_entity
+    end  
   end
 
   def show

@@ -1,6 +1,3 @@
 @campaigns.map do |campaign|
-  {
-    title: campaign.title, 
-    details: campaign.details
-  }
+  render partial: "campaign.json.jb", locals: {campaign: campaign}
 end   
