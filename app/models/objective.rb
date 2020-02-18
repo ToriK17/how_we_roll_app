@@ -4,7 +4,7 @@ class Objective < ApplicationRecord
   end
 
   def overdue?
-    return Time.now > deadline
+    return Time.now > date
   end
 
   def increment_priority!
@@ -19,7 +19,7 @@ class Objective < ApplicationRecord
     end
   end
 
-  def snooze_hour!
-    update(deadline: deadline + 1.hour)
+  def snooze_by_day!
+    update(date: date + 1.day)
   end
 end
